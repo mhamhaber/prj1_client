@@ -1,8 +1,15 @@
 # Client repository guidance
 
-- The client is a React and TypeScript project, not Java or Gradle.
-- Active application code and build configuration are in the `dev` worktree at `../../worktrees/client/dev` until merged into `main`.
-- Do not restore the Java scaffold or add a Gradle build.
-- Follow the development worktree's `AGENTS.md` when editing or building the React application.
-- From that worktree, install dependencies with `npm ci`, run full verification with `npm run check`, run all tests with `npm test`, and run a single test with `npm test -- src/App.test.tsx`.
-- Start the client with `npm run dev`. It requires Node.js 22+ and npm 10+.
+- This is an independent React and TypeScript repository using Vite and npm, not Java or Gradle.
+- Use Node.js 22 or newer and npm 10 or newer. Vite 6 and Vitest 4 support the installed Node.js 22.11.
+- Application code belongs in `src/`; keep component tests alongside components.
+- Use Vitest and React Testing Library. Shared test setup is `src/test/setup.ts`.
+- Run commands from this repository or one of its worktrees.
+- Install locked dependencies: `npm ci`. Keep `package-lock.json` tracked.
+- Full verification: `npm run check` (typecheck, production build, and tests).
+- Production build: `npm run build`.
+- Full test suite: `npm test`.
+- Single test file: `npm test -- src/App.test.tsx`.
+- Development server: `npm run dev`.
+- The hello prototype fetches `GET /api/hello`; the Vite dev server proxies `/api` to `http://127.0.0.1:8080`. Start the server separately with `./gradlew run` from its checkout (normally `repos/server`).
+- Test API success, loading, failure, and retry behavior; do not replace server-provided content with a hardcoded client greeting.

@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  color: #243c32;
+  background: #f4f3ed;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible { outline: 3px solid #a45a31; outline-offset: 5px; }
+.page { max-width: 1200px; margin: 0 auto; padding: 30px 48px 24px; }
+.masthead, .brand, .card-topline, .connection, .card-footer, .journey, .journey > span, .page-footer { display: flex; align-items: center; }
+.masthead { justify-content: space-between; margin-bottom: 44px; }
+.brand { gap: 10px; color: inherit; text-decoration: none; font-weight: 700; font-size: 18px; }
+.brand-mark { background: #294b3c; color: #fff; padding: 6px 9px; border-radius: 9px; letter-spacing: -3px; margin-right: 2px; }
+.brand-mark span { color: #c9df97; padding-right: 3px; }
+.brand-label { color: #7c8379; font-size: 13px; font-weight: 400; }
+.prototype-label { font-size: 10px; letter-spacing: 2px; color: #70796d; }
+.hello-card { position: relative; overflow: hidden; background: #fffef9; border: 1px solid #e0e2d5; border-radius: 24px; box-shadow: 0 14px 45px #2c442609; }
+.hello-card::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 32%, #e8efd970, transparent 52%); }
+.card-topline { position: relative; justify-content: space-between; padding: 26px 30px; }
+.pill { border: 1px solid #dce1d2; border-radius: 30px; padding: 7px 11px; font-size: 9px; letter-spacing: 1.5px; }
+.connection { gap: 7px; font-size: 11px; color: #62705b; }
+.status-dot { height: 6px; width: 6px; border-radius: 50%; background: #688a49; box-shadow: 0 0 0 4px #688a4910; }
+.offline .status-dot { background: #af6b42; }
+.orbit { position: relative; width: 180px; height: 145px; margin: 0 auto 12px; }
+.orbit-ring { position: absolute; width: 176px; height: 80px; border: 1px solid #c7d1b7; border-radius: 50%; transform: rotate(-30deg); top: 37px; }
+.planet { display: grid; place-items: center; position: absolute; left: 42px; top: 20px; width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(140deg, #e6edcf, #adc58d); color: #486543; font-size: 69px; box-shadow: inset -7px -8px 18px #58733b12, 0 8px 20px #6c805e15; }
+.orbit-star { position: absolute; right: 2px; top: 15px; font-size: 27px; color: #b98350; }
+.orbit-dot { position: absolute; width: 11px; height: 11px; border-radius: 50%; background: #c08a55; left: 9px; bottom: 28px; }
+.greeting { position: relative; text-align: center; padding: 0 28px 48px; }
+.eyebrow { font-size: 11px; color: #68775e; letter-spacing: .6px; margin: 0 0 16px; }
+h1 { font-family: 'Manrope', system-ui, sans-serif; font-size: clamp(38px, 6vw, 72px); line-height: 1.15; font-weight: 500; letter-spacing: -3px; margin: 0 0 20px; }
+.message { max-width: 430px; margin: 0 auto; font-size: 14px; line-height: 1.9; color: #737c6c; min-height: 80px; }
+button { display: inline-flex; align-items: center; gap: 28px; border: 0; border-radius: 8px; padding: 14px 20px; margin-top: 25px; font: 500 12px 'DM Sans', system-ui, sans-serif; background: #2d4d3d; color: #fffef9; cursor: pointer; transition: background .2s, transform .2s; }
+button:hover:not(:disabled) { background: #41654c; transform: translateY(-2px); }
+button:disabled { cursor: wait; opacity: .6; }
+button span { font-size: 18px; }
+.error-hint { color: #975c3d; font-size: 12px; }
+.card-footer { position: relative; justify-content: space-between; border-top: 1px solid #e9eadf; padding: 18px 30px; font-size: 8px; letter-spacing: 1.5px; color: #7c8573; }
+.edition { font-size: 11px; }
+.journey { justify-content: center; gap: 20px; margin: 32px 0 52px; color: #747e6e; font-size: 11px; }
+.journey > span { gap: 8px; }
+.step-number { color: #929c86; font-size: 9px; border: 1px solid #dbdfd2; border-radius: 50%; padding: 5px; }
+.journey-line { width: 42px; height: 1px; background: #d9ded0; }
+.page-footer { justify-content: space-between; font-size: 10px; color: #8b9284; border-top: 1px solid #dfe2d5; padding-top: 20px; }
+
+@media (max-width: 600px) {
+  .page { padding: 22px 16px; }
+  .masthead { margin-bottom: 26px; }
+  .brand-label, .prototype-label { display: none; }
+  .card-topline { padding: 22px 16px; }
+  .connection { font-size: 10px; }
+  h1 { letter-spacing: -1.5px; }
+  .greeting { padding: 0 20px 35px; }
+  .message { font-size: 13px; }
+  .card-footer { padding: 18px 16px; letter-spacing: .7px; gap: 12px; }
+  .journey { flex-direction: column; gap: 10px; margin-bottom: 30px; }
+  .journey-line { width: 1px; height: 14px; }
+  .page-footer { gap: 20px; line-height: 1.8; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button { transition: none; }
+}
