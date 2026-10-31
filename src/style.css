@@ -12,7 +12,7 @@
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 320px; }
 button, a { -webkit-tap-highlight-color: transparent; }
-button:focus-visible, a:focus-visible { outline: 3px solid #a45a31; outline-offset: 5px; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #a45a31; outline-offset: 5px; }
 .page { max-width: 1200px; margin: 0 auto; padding: 30px 48px 24px; }
 .masthead, .brand, .card-topline, .connection, .card-footer, .journey, .journey > span, .page-footer { display: flex; align-items: center; }
 .masthead { justify-content: space-between; margin-bottom: 44px; }
@@ -36,7 +36,11 @@ button:focus-visible, a:focus-visible { outline: 3px solid #a45a31; outline-offs
 .greeting { position: relative; text-align: center; padding: 0 28px 48px; }
 .eyebrow { font-size: 11px; color: #68775e; letter-spacing: .6px; margin: 0 0 16px; }
 h1 { font-family: 'Manrope', system-ui, sans-serif; font-size: clamp(38px, 6vw, 72px); line-height: 1.15; font-weight: 500; letter-spacing: -3px; margin: 0 0 20px; }
-.message { max-width: 430px; margin: 0 auto; font-size: 14px; line-height: 1.9; color: #737c6c; min-height: 80px; }
+.message { max-width: 430px; margin: 0 auto; font-size: 14px; line-height: 1.9; color: #737c6c; min-height: 80px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.echo-form { max-width: 430px; margin: 20px auto 0; text-align: left; }
+.echo-form label { display: block; margin-bottom: 8px; font-size: 13px; }
+.echo-form input { width: 100%; border: 1px solid #c7d1b7; border-radius: 8px; padding: 14px; font: inherit; color: inherit; background: #fffef9; }
+.echo-form button { display: flex; margin: 16px auto 0; }
 button { display: inline-flex; align-items: center; gap: 28px; border: 0; border-radius: 8px; padding: 14px 20px; margin-top: 25px; font: 500 12px 'DM Sans', system-ui, sans-serif; background: #2d4d3d; color: #fffef9; cursor: pointer; transition: background .2s, transform .2s; }
 button:hover:not(:disabled) { background: #41654c; transform: translateY(-2px); }
 button:disabled { cursor: wait; opacity: .6; }

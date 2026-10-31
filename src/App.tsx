@@ -19,6 +19,8 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [attempt, setAttempt] = useState(0);
+  const [text, setText] = useState('');
+  const [submittedText, setSubmittedText] = useState<string | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -27,7 +29,8 @@ export default function App() {
 
     async function load() {
       try {
-        const response = await fetch('/api/hello', { signal: controller.signal });
+        const url = submittedText === null ? '/api/hello' : `/api/hello?${new URLSearchParams({ text: submittedText })}`;
+        const response = await fetch(url, { signal: controller.signal });
         if (!response.ok) throw new Error('Greeting request failed');
         const data: unknown = await response.json();
         if (!isGreeting(data)) throw new Error('Invalid greeting response');
@@ -41,7 +44,7 @@ export default function App() {
 
     void load();
     return () => controller.abort();
-  }, [attempt]);
+  }, [attempt, submittedText]);
 
   return (
     <div className="page">
@@ -78,10 +81,20 @@ export default function App() {
                 ? 'We couldn’t reach the server. Make sure it’s running, then let’s try that hello again.'
                 : greeting?.message}
             </p>
-            <button disabled={loading} onClick={() => setAttempt((value) => value + 1)}>
-              {loading ? 'Connecting…' : error ? 'Try again' : 'Say hello again'}
-              <span aria-hidden="true">↗</span>
-            </button>
+            <form className="echo-form" onSubmit={(event) => {
+              event.preventDefault();
+              setSubmittedText(text);
+              setAttempt((value) => value + 1);
+            }}>
+              <label htmlFor="echo-text">Your text</label>
+              <input id="echo-text" value={text} onChange={(event) => setText(event.target.value)}
+                placeholder="Type something for the server to echo" required />
+              <button type="submit" disabled={loading || !text.trim()}>
+                {loading ? 'Connecting…' : 'Send text'}
+                <span aria-hidden="true">↗</span>
+              </button>
+            </form>
+            {error && <button disabled={loading} onClick={() => setAttempt((value) => value + 1)}>Try again</button>}
             {error && <p className="error-hint" role="alert">Start the Java server on port 8080 to connect.</p>}
           </div>
 
