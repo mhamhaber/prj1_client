@@ -1,5 +1,7 @@
-.gradle/
-build/
+node_modules/
+dist/
+coverage/
+*.local
 .idea/
 *.iml
 .DS_Store

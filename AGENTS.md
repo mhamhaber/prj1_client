@@ -1,10 +1,8 @@
 # Client repository guidance
 
-- This is an independent Java 25 repository using Gradle Kotlin DSL and the Gradle wrapper.
-- Keep the Java toolchain configured for version 25 in `build.gradle.kts`.
-- Production code belongs in `src/main/java`; tests belong in `src/test/java`.
-- Tests use JUnit 5. No application code or tests have been added yet.
-- Run commands from this repository or its development worktree.
-- Build and verify: `./gradlew build`.
-- Full test suite: `./gradlew test`.
-- Single test class: `./gradlew test --tests 'com.example.MyTest'` (replace with an actual test class).
+- The client is a React and TypeScript project, not Java or Gradle.
+- Active application code and build configuration are in the `dev` worktree at `../../worktrees/client/dev` until merged into `main`.
+- Do not restore the Java scaffold or add a Gradle build.
+- Follow the development worktree's `AGENTS.md` when editing or building the React application.
+- From that worktree, install dependencies with `npm ci`, run full verification with `npm run check`, run all tests with `npm test`, and run a single test with `npm test -- src/App.test.tsx`.
+- Start the client with `npm run dev`. It requires Node.js 22+ and npm 10+.

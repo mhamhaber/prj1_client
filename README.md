@@ -1,24 +1,17 @@
 # client
 
-Independent Java 25 project using Gradle Kotlin DSL and JUnit 5.
+The client is a React and TypeScript application using Vite and npm.
+The original Java/Gradle scaffold has been removed.
 
-## Requirements
-
-- JDK 25, available through `JAVA_HOME` or `PATH`.
-- Internet access on the first build to download Gradle and dependencies.
-
-## Commands
-
-Run these commands from this repository or one of its worktrees:
+The React implementation currently lives in the `dev` worktree, pending a merge
+into `main`. From this main checkout:
 
 ```sh
-./gradlew build
-./gradlew test
-./gradlew test --tests 'com.example.MyTest'
+cd ../../worktrees/client/dev
+npm ci
+npm run check
+npm run dev
 ```
 
-Replace `com.example.MyTest` with an actual test class. On Windows, use
-`gradlew.bat` instead of `./gradlew`.
-
-Production code belongs in `src/main/java`; tests belong in `src/test/java`.
-No application code or tests have been added yet.
+Requires Node.js 22+ and npm 10+. See the development worktree's README for
+instructions on connecting to the Java server.
