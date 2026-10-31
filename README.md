@@ -1,24 +1,42 @@
 # client
 
-Independent Java 25 project using Gradle Kotlin DSL and JUnit 5.
+Independent React and TypeScript client using Vite, npm, and Vitest.
 
 ## Requirements
 
-- JDK 25, available through `JAVA_HOME` or `PATH`.
-- Internet access on the first build to download Gradle and dependencies.
+- Node.js 22 or newer and npm 10 or newer.
+- Internet access to install dependencies.
+
+Vite 6 and Vitest 4 support the workspace's installed Node.js 22.11.
 
 ## Commands
 
-Run these commands from this repository or one of its worktrees:
+Run from this repository's development worktree:
 
 ```sh
-./gradlew build
-./gradlew test
-./gradlew test --tests 'com.example.MyTest'
+npm ci             # Install locked dependencies
+npm run dev        # Start the local development server
+npm run check      # Typecheck, production build, and all tests
+npm run build      # Typecheck and build to dist/
+npm test           # Run all tests once
+npm test -- src/App.test.tsx  # Run a single test file
+npm run test:watch # Watch tests during development
+npm run preview    # Preview the production build locally
 ```
 
-Replace `com.example.MyTest` with an actual test class. On Windows, use
-`gradlew.bat` instead of `./gradlew`.
+Application code is in `src/`; component tests sit beside their components.
+Testing uses Vitest, React Testing Library, and jsdom. The initial page is a
+hello-world prototype that loads its greeting content from the Java server.
 
-Production code belongs in `src/main/java`; tests belong in `src/test/java`.
-No application code or tests have been added yet.
+## Server connection
+
+Start the Java server in a separate terminal from `worktrees/server/dev` with
+`./gradlew run`. Then start this client with `npm run dev` and open the URL Vite
+prints (normally `http://localhost:5173`). Vite proxies `/api` requests to
+`http://127.0.0.1:8080`; adjust `vite.config.ts` if the server port changes.
+The page includes loading, unavailable-server, and retry states.
+
+The proxy applies to the development server, not the built `dist/` files or
+`npm run preview`. A deployed setup must route `/api` to the Java server on the
+same origin. Optional Google Fonts enhance the styling; system fonts are used
+when they cannot load.
