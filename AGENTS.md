@@ -1,4 +1,4 @@
-# Client repository guidance
+# prj1_client repository guidance
 
 - This is an independent React and TypeScript repository using Vite and npm, not Java or Gradle.
 - Use Node.js 22 or newer and npm 10 or newer. Vite 6 and Vitest 4 support the installed Node.js 22.11.
@@ -11,5 +11,5 @@
 - Full test suite: `npm test`.
 - Single test file: `npm test -- src/App.test.tsx`.
 - Development server: `npm run dev`.
-- The hello prototype fetches `GET /api/hello`; the Vite dev server proxies `/api` to `http://127.0.0.1:8080`. Start the server separately with `./gradlew run` from its checkout (normally `repos/server`).
+- The hello prototype fetches `GET /api/hello`; the Vite dev server proxies `/api` to `http://127.0.0.1:8080`. Start the server separately with `./gradlew run` from its checkout (normally `repos/prj1_server`).
 - Test API success, loading, failure, and retry behavior; do not replace server-provided content with a hardcoded client greeting.
